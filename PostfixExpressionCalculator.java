@@ -2,39 +2,8 @@
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-class BinaryTreeNode {
-    char value;
-    BinaryTreeNode left;
-    BinaryTreeNode right;
-
-    BinaryTreeNode(char value) {
-        this.value = value;
-    }
-
-    boolean isOperator() {
-        return left != null && right != null;
-    }
-}
-
 public class PostfixExpressionCalculator {
     private BinaryTreeNode root;
-
-    public void buildExpressionTree(String postfixExpression) {
-        Deque<BinaryTreeNode> stack = new ArrayDeque<>();
-
-        for (char ch : postfixExpression.toCharArray()) {
-            BinaryTreeNode node = new BinaryTreeNode(ch);
-
-            if (isOperator(ch)) {
-                node.right = stack.pop();
-                node.left = stack.pop();
-            }
-
-            stack.push(node);
-        }
-
-        root = stack.pop();
-    }
 
     public int evaluateExpression() {
         return evaluate(root);
@@ -53,6 +22,22 @@ public class PostfixExpressionCalculator {
         int rightValue = evaluate(node.right);
 
         return performOperation(node.value, leftValue, rightValue);
+    }
+    public void buildExpressionTree(String postfixExpression) {
+        Deque<BinaryTreeNode> stack = new ArrayDeque<>();
+
+        for (char ch : postfixExpression.toCharArray()) {
+            BinaryTreeNode node = new BinaryTreeNode(ch);
+
+            if (isOperator(ch)) {
+                node.right = stack.pop();
+                node.left = stack.pop();
+            }
+
+            stack.push(node);
+        }
+
+        root = stack.pop();
     }
 
     private boolean isOperator(char ch) {
@@ -83,5 +68,18 @@ public class PostfixExpressionCalculator {
 
         System.out.println("Postfix Expression: " + postfixExpression);
         System.out.println("Result: " + result);
+    }
+}
+class BinaryTreeNode {
+    char value;
+    BinaryTreeNode left;
+    BinaryTreeNode right;
+
+    BinaryTreeNode(char value) {
+        this.value = value;
+    }
+
+    boolean isOperator() {
+        return left != null && right != null;
     }
 }

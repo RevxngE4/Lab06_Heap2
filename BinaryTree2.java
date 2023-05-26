@@ -35,7 +35,7 @@ public class BinaryTree2 {
         return root;
     }
 
-    public void inorderTraversal(Consumer<Node> action) {
+    public void EnordentrAnsversal(Consumer<Node> action) {
         System.out.println("Inorder Traversal:");
         inorder(root, action);
         System.out.println();
@@ -49,7 +49,7 @@ public class BinaryTree2 {
         }
     }
 
-    public void preorderTraversal(Consumer<Node> action) {
+    public void recorridodepreorden(Consumer<Node> action) {
         System.out.println("Preorder Traversal:");
         preorder(root, action);
         System.out.println();
@@ -63,7 +63,7 @@ public class BinaryTree2 {
         }
     }
 
-    public void postorderTraversal(Consumer<Node> action) {
+    public void recorridodepostorden(Consumer<Node> action) {
         System.out.println("Postorder Traversal:");
         postorder(root, action);
         System.out.println();
@@ -77,7 +77,7 @@ public class BinaryTree2 {
         }
     }
 
-    public void levelOrderTraversal(Consumer<Node> action) {
+    public void recorridodeOrdendeNivel(Consumer<Node> action) {
         System.out.println("Level Order Traversal:");
         if (root == null) {
             return;
@@ -114,9 +114,9 @@ public class BinaryTree2 {
 
         Consumer<Node> squareAction = node -> System.out.print(node.data * node.data + " ");
 
-        tree.inorderTraversal(squareAction);
-        tree.preorderTraversal(squareAction);
-        tree.postorderTraversal(squareAction);
-        tree.levelOrderTraversal(squareAction);
+        tree.EnordentrAnsversal(squareAction);
+        tree.recorridodepreorden(squareAction);
+        tree.recorridodepostorden(squareAction);
+        tree.recorridodeOrdendeNivel(squareAction);
     }
 }

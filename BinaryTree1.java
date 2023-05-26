@@ -33,22 +33,22 @@ public class BinaryTree1 {
         return root;
     }
 
-    public void inorderTraversalRecursive() {
-        System.out.println("Inorder Traversal (Recursive):");
-        inorderRecursive(root);
+    public void EnOrdenTranversalRecursiva() {
+        System.out.println("En orden tranversal recursiva:");
+        EnOrdenRecursiva(root);
         System.out.println();
     }
 
-    private void inorderRecursive(Node root) {
+    private void EnOrdenRecursiva(Node root) {
         if (root != null) {
-            inorderRecursive(root.left);
+            EnOrdenRecursiva(root.left);
             System.out.print(root.data + " ");
-            inorderRecursive(root.right);
+            EnOrdenRecursiva(root.right);
         }
     }
 
-    public void inorderTraversalIterative() {
-        System.out.println("Inorder Traversal (Iterative):");
+    public void EnOrdenTranversalINterativa() {
+        System.out.println("En orden tranversal interativa:");
         if (root == null) {
             return;
         }
@@ -71,22 +71,22 @@ public class BinaryTree1 {
         System.out.println();
     }
 
-    public void preorderTraversalRecursive() {
-        System.out.println("Preorder Traversal (Recursive):");
-        preorderRecursive(root);
+    public void preordentransversalrecursiva() {
+        System.out.println("pre orden tranversal recursiva :");
+        preoordenrecursiva(root);
         System.out.println();
     }
 
-    private void preorderRecursive(Node root) {
+    private void preoordenrecursiva(Node root) {
         if (root != null) {
             System.out.print(root.data + " ");
-            preorderRecursive(root.left);
-            preorderRecursive(root.right);
+            preoordenrecursiva(root.left);
+            preoordenrecursiva(root.right);
         }
     }
 
-    public void preorderTraversalIterative() {
-        System.out.println("Preorder Traversal (Iterative):");
+    public void preorderTranversalInterativa() {
+        System.out.println("pre orden tranversal interativa:");
         if (root == null) {
             return;
         }
@@ -110,22 +110,22 @@ public class BinaryTree1 {
         System.out.println();
     }
 
-    public void postorderTraversalRecursive() {
-        System.out.println("Postorder Traversal (Recursive):");
-        postorderRecursive(root);
+    public void postordenTraversalRecursivo() {
+        System.out.println("Postorden Traversal (Recursivo):");
+        postordenRecursivo(root);
         System.out.println();
     }
 
-    private void postorderRecursive(Node root) {
+    private void postordenRecursivo(Node root) {
         if (root != null) {
-            postorderRecursive(root.left);
-            postorderRecursive(root.right);
+            postordenRecursivo(root.left);
+            postordenRecursivo(root.right);
             System.out.print(root.data + " ");
         }
     }
 
-    public void postorderTraversalIterative() {
-        System.out.println("Postorder Traversal (Iterative):");
+    public void postordenTraversalIterativo() {
+        System.out.println("Postorden Traversal (Iterativo):");
         if (root == null) {
             return;
         }
@@ -154,7 +154,7 @@ public class BinaryTree1 {
         System.out.println();
     }
 
-    public void levelOrderTraversal() {
+    public void recorridodeOrdendeNivel() {
         System.out.println("Level Order Traversal:");
         if (root == null) {
             return;
@@ -181,38 +181,38 @@ public class BinaryTree1 {
 
     public static void main(String[] args) {
         BinaryTree1 tree = new BinaryTree1();
-        tree.insert(4);
-        tree.insert(2);
-        tree.insert(6);
-        tree.insert(1);
-        tree.insert(3);
         tree.insert(5);
+        tree.insert(1);
+        tree.insert(9);
+        tree.insert(10);
         tree.insert(7);
+        tree.insert(3);
+        tree.insert(2);
 
-        tree.inorderTraversalRecursive();
-        tree.inorderTraversalIterative();
+        tree.EnOrdenTranversalRecursiva();
+        tree.EnOrdenTranversalINterativa();
 
-        tree.preorderTraversalRecursive();
-        tree.preorderTraversalIterative();
+        tree.preordentransversalrecursiva();
+        tree.preorderTranversalInterativa();
 
-        tree.postorderTraversalRecursive();
-        tree.postorderTraversalIterative();
+        tree.postordenTraversalRecursivo();
+        tree.postordenTraversalIterativo();
 
-        tree.levelOrderTraversal();
+        tree.recorridodeOrdendeNivel();
 
-        System.out.println("\nDoes the tree have duplicates? " + tree.hasDuplicates());
-        tree.printLevelsWithLeaves();
+        System.out.println("\nDoes the tree have duplicates? " + tree.duplica());
+        tree.NivelesDeImpresiónConHojas();
         tree.printVerticesWithImbalancedDescendants();
-        tree.printVerticesWithImbalanceBy15();
-        System.out.println(tree.findAverageVertex());
+        tree.imprimirVérticesConDesequilibrioEn15();
+        System.out.println(tree.encontrarVérticePromedio());
     }
 
-    public boolean hasDuplicates() {
+    public boolean duplica() {
         Set<Integer> set = new HashSet<>();
-        return hasDuplicates(root, set);
+        return haydobles(root, set);
     }
 
-    private boolean hasDuplicates(Node root, Set<Integer> set) {
+    private boolean haydobles(Node root, Set<Integer> set) {
         if (root == null) {
             return false;
         }
@@ -223,10 +223,10 @@ public class BinaryTree1 {
 
         set.add(root.data);
 
-        return hasDuplicates(root.left, set) || hasDuplicates(root.right, set);
+        return haydobles(root.left, set) || haydobles(root.right, set);
     }
 
-    public void printLevelsWithLeaves() {
+    public void NivelesDeImpresiónConHojas() {
         System.out.println("Levels with Leaves:");
         printLevelsWithLeaves(root, 0);
     }
@@ -246,16 +246,16 @@ public class BinaryTree1 {
 
     public void printVerticesWithImbalancedDescendants() {
         System.out.println("Vertices with Imbalanced Descendants:");
-        printVerticesWithImbalancedDescendants(root);
+        imprimirVérticesConDescendientesDesequilibrados(root);
     }
 
-    private int printVerticesWithImbalancedDescendants(Node root) {
+    private int imprimirVérticesConDescendientesDesequilibrados(Node root) {
         if (root == null) {
             return 0;
         }
 
-        int leftDescendants = printVerticesWithImbalancedDescendants(root.left);
-        int rightDescendants = printVerticesWithImbalancedDescendants(root.right);
+        int leftDescendants = imprimirVérticesConDescendientesDesequilibrados(root.left);
+        int rightDescendants = imprimirVérticesConDescendientesDesequilibrados(root.right);
 
         int totalDescendants = leftDescendants + rightDescendants;
 
@@ -266,18 +266,18 @@ public class BinaryTree1 {
         return totalDescendants + 1;
     }
 
-    public void printVerticesWithImbalanceBy15() {
+    public void imprimirVérticesConDesequilibrioEn15() {
         System.out.println("Vertices with Imbalance by 15:");
-        printVerticesWithImbalanceBy15(root);
+        imprimirVérticesConDesequilibrioEn15(root);
     }
 
-    private int printVerticesWithImbalanceBy15(Node root) {
+    private int imprimirVérticesConDesequilibrioEn15(Node root) {
         if (root == null) {
             return 0;
         }
 
-        int leftDescendants = printVerticesWithImbalanceBy15(root.left);
-        int rightDescendants = printVerticesWithImbalanceBy15(root.right);
+        int leftDescendants = imprimirVérticesConDesequilibrioEn15(root.left);
+        int rightDescendants = imprimirVérticesConDesequilibrioEn15(root.right);
 
         int totalDescendants = leftDescendants + rightDescendants;
 
@@ -288,7 +288,7 @@ public class BinaryTree1 {
         return totalDescendants + 1;
     }
 
-    public int findAverageVertex() {
+    public int encontrarVérticePromedio() {
         int sum = calculateSum(root);
         int count = countVertices(root);
         int average = sum / count;
